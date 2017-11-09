@@ -1,0 +1,31 @@
+#!/bin/sh
+
+RED='\033[0;31m'
+GREEN='\033[0;32m'
+YELLOW='\033[0;33m'
+NC='\033[0m' # No Color
+echo "Hello from ${YELLOW}Lumyk${NC} 🤖"
+
+if [ "$1" = "help" ] || [ "$1" = "--help" ] || [ "$1" = "?" ] ; then
+  echo "${RED}Get only one argument${NC}"
+  echo "${GREEN}update or u${NC} — run package update"
+  echo "${GREEN}gen or g${NC} — generate project file"
+  echo "${GREEN}build or b${NC} — run swift build"
+  echo "${GREEN}--clean or --c${NC} — run swift package clean"
+elif [ "$1" = "update" ] || [ "$1" = "u" ] ; then
+  echo "${GREEN}Package update${NC}"
+  swift package update
+elif [ "$1" = "gen" ] || [ "$1" = "g" ] ; then
+  echo "${GREEN}Generate project file${NC}"
+  swift package generate-xcodeproj
+elif [ "$1" = "build" ] || [ "$1" = "b" ] ; then
+  echo "${GREEN}Swift build${NC}"
+  swift build
+else
+  if [ "$1" = "--clean" ] || [ "$1" = "--c" ] ; then
+    echo "${GREEN}Clean${NC}"
+    swift package clean
+  fi
+  swift package update
+  swift package generate-xcodeproj --xcconfig-overrides proj_config.xcconfig
+fi
