@@ -3,7 +3,7 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
-      <module fileurl="file://$PROJECT_DIR$/gitpub-projets.iml" filepath="$PROJECT_DIR$/gitpub-projets.iml" />
+      <module fileurl="file://$PROJECT_DIR$/github-projects-android.iml" filepath="$PROJECT_DIR$/github-projects-android.iml" />
     </modules>
   </component>
 </project>

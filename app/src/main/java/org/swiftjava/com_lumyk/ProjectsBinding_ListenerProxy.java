@@ -15,12 +15,12 @@ public class ProjectsBinding_ListenerProxy implements com.lumyk.swiftbindings.Pr
         this.__swiftObject = __swiftObject;
     }
 
-    /// public abstract void com.lumyk.swiftbindings.ProjectsBinding$Listener.createOauthURL()
+    /// public abstract java.lang.String com.lumyk.swiftbindings.ProjectsBinding$Listener.getOauthURL()
 
-    public native void __createOauthURL( long __swiftObject );
+    public native java.lang.String __getOauthURL( long __swiftObject );
 
-    public void createOauthURL() {
-        __createOauthURL( __swiftObject  );
+    public java.lang.String getOauthURL() {
+        return __getOauthURL( __swiftObject  );
     }
 
     /// public abstract void com.lumyk.swiftbindings.ProjectsBinding$Listener.getUser()
@@ -53,6 +53,14 @@ public class ProjectsBinding_ListenerProxy implements com.lumyk.swiftbindings.Pr
 
     public void setupAccessToken( java.lang.String accessToken ) {
         __setupAccessToken( __swiftObject, accessToken );
+    }
+
+    /// public abstract void com.lumyk.swiftbindings.ProjectsBinding$Listener.validateAccessToken(java.lang.String)
+
+    public native void __validateAccessToken( long __swiftObject, java.lang.String accessToken );
+
+    public void validateAccessToken( java.lang.String accessToken ) {
+        __validateAccessToken( __swiftObject, accessToken );
     }
 
     public native void __finalize( long __swiftObject );

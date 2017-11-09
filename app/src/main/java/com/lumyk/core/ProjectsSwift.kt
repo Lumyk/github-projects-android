@@ -16,7 +16,7 @@ class ProjectsSwift : Responder {
 
     var listener: Listener
 
-    private var oauth_url_complition: ((URL: String) -> Unit)? = null
+    private var validate_token_complition: ((isValid: Boolean) -> Unit)? = null
 
     private var handleAccessTokenURLComplition: ((error: String?) -> Unit)? = null
 
@@ -45,10 +45,13 @@ class ProjectsSwift : Responder {
         }
     }
 
-    fun getOauthURL(completion: (String?) -> Unit) {
-        this.oauth_url_complition = completion
-        this.listener.createOauthURL()
+    fun validateAccessToken(accessToken: String, completion: (Boolean?) -> Unit) {
+        this.validate_token_complition = completion
+        this.listener.validateAccessToken(accessToken)
+    }
 
+    fun getOauthURL(): String? {
+        return this.listener.oauthURL
     }
 
     fun handleAccessTokenURL(url: String?, completion: (String?) -> Unit) {
@@ -63,13 +66,6 @@ class ProjectsSwift : Responder {
     }
 
     //  Responder
-
-    override fun oauthURL(url: String?) {
-        val oauth_url_complition = this.oauth_url_complition
-        if (url != null && oauth_url_complition != null) {
-            oauth_url_complition(url)
-        }
-    }
 
     override fun receiveAccessToken(accessToken: String?, error: String?) {
         if (accessToken != null) {
@@ -87,6 +83,17 @@ class ProjectsSwift : Responder {
                 } else {
                     complition("unnown error")
                 }
+            }
+        }
+    }
+
+    override fun validateAccessTokenResult(isValid: Boolean?) {
+        val complition = this.validate_token_complition
+        if (complition != null) {
+            if (isValid != null) {
+                complition(isValid)
+            } else {
+                complition(false)
             }
         }
     }

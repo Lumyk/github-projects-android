@@ -18,14 +18,9 @@ class Login : AppCompatActivity() {
         val webView : WebView = findViewById(R.id.webView) as WebView
         webView.settings.javaScriptEnabled = true
         webView.setWebViewClient(myWebViewClient())
-
-        projects.getOauthURL {
-            println(it)
-            if (it != null) {
-                webView.loadUrl(it)
-            } else {
-                println("ProjectsSwift.getOauthURL error")
-            }
+        val url = projects.getOauthURL()
+        if (url != null) {
+            webView.loadUrl(url)
         }
     }
 

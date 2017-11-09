@@ -41,11 +41,9 @@ class ProjectsListener: ProjectsBinding_Listener {
         User(user: GHUser(id: "", login: "", name: nil, url: nil, email: "", bio: nil, avatarUrl: nil, location: nil)).withJavaObject { _ in }
     }
 
-    func createOauthURL() {
-        if let url = oauth.authorizeURL() {
-            NSLog("url \(url)")
-            responder.oauthURL(url: url.absoluteString)
-        }
+    
+    func getOauthURL() -> String! {
+        return oauth.authorizeURL()?.absoluteString
     }
 
     func handleAccessTokenURL(url: String?) {

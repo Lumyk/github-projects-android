@@ -10,9 +10,11 @@ public interface ProjectsBinding {
 
         public void setCacheDir(String cacheDir);
 
-        public void createOauthURL();
+        public String getOauthURL();
 
         public void handleAccessTokenURL(String url);
+
+        public void validateAccessToken(String accessToken);
 
         public void setupAccessToken(String accessToken);
 
@@ -22,11 +24,12 @@ public interface ProjectsBinding {
     // Messages from Swift back to Activity
     public interface Responder {
 
-        public void oauthURL(String url);
+        public void validateAccessTokenResult(Boolean isValid);
 
         public void receiveAccessToken(String accessToken, String error);
 
         public void getUserResult(UserListener user);
+
     }
 
 }

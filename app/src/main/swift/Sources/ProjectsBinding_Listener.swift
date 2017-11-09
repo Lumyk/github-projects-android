@@ -7,9 +7,9 @@ import java_swift
 
 public protocol ProjectsBinding_Listener: JavaProtocol {
 
-    /// public abstract void com.lumyk.swiftbindings.ProjectsBinding$Listener.createOauthURL()
+    /// public abstract java.lang.String com.lumyk.swiftbindings.ProjectsBinding$Listener.getOauthURL()
 
-    func createOauthURL()
+    func getOauthURL() -> String!
 
     /// public abstract void com.lumyk.swiftbindings.ProjectsBinding$Listener.getUser()
 
@@ -27,6 +27,10 @@ public protocol ProjectsBinding_Listener: JavaProtocol {
 
     func setupAccessToken( accessToken: String? )
 
+    /// public abstract void com.lumyk.swiftbindings.ProjectsBinding$Listener.validateAccessToken(java.lang.String)
+
+    func validateAccessToken( accessToken: String? )
+
 }
 
 
@@ -34,37 +38,39 @@ open class ProjectsBinding_ListenerForward: JNIObjectForward, ProjectsBinding_Li
 
     private static var ProjectsBinding_ListenerJNIClass: jclass?
 
-    /// public abstract void com.lumyk.swiftbindings.ProjectsBinding$Listener.createOauthURL()
+    /// public abstract java.lang.String com.lumyk.swiftbindings.ProjectsBinding$Listener.getOauthURL()
 
-    private static var createOauthURL_MethodID_6: jmethodID?
+    private static var getOauthURL_MethodID_7: jmethodID?
 
-    open func createOauthURL() {
+    open func getOauthURL() -> String! {
         var __locals = [jobject]()
         var __args = [jvalue]( repeating: jvalue(), count: 1 )
-        JNIMethod.CallVoidMethod( object: javaObject, methodName: "createOauthURL", methodSig: "()V", methodCache: &ProjectsBinding_ListenerForward.createOauthURL_MethodID_6, args: &__args, locals: &__locals )
+        let __return = JNIMethod.CallObjectMethod( object: javaObject, methodName: "getOauthURL", methodSig: "()Ljava/lang/String;", methodCache: &ProjectsBinding_ListenerForward.getOauthURL_MethodID_7, args: &__args, locals: &__locals )
+        defer { JNI.DeleteLocalRef( __return ) }
+        return __return != nil ? String( javaObject: __return ) : nil
     }
 
 
     /// public abstract void com.lumyk.swiftbindings.ProjectsBinding$Listener.getUser()
 
-    private static var getUser_MethodID_7: jmethodID?
+    private static var getUser_MethodID_8: jmethodID?
 
     open func getUser() {
         var __locals = [jobject]()
         var __args = [jvalue]( repeating: jvalue(), count: 1 )
-        JNIMethod.CallVoidMethod( object: javaObject, methodName: "getUser", methodSig: "()V", methodCache: &ProjectsBinding_ListenerForward.getUser_MethodID_7, args: &__args, locals: &__locals )
+        JNIMethod.CallVoidMethod( object: javaObject, methodName: "getUser", methodSig: "()V", methodCache: &ProjectsBinding_ListenerForward.getUser_MethodID_8, args: &__args, locals: &__locals )
     }
 
 
     /// public abstract void com.lumyk.swiftbindings.ProjectsBinding$Listener.handleAccessTokenURL(java.lang.String)
 
-    private static var handleAccessTokenURL_MethodID_8: jmethodID?
+    private static var handleAccessTokenURL_MethodID_9: jmethodID?
 
     open func handleAccessTokenURL( url: String? ) {
         var __locals = [jobject]()
         var __args = [jvalue]( repeating: jvalue(), count: 1 )
         __args[0] = JNIType.toJava( value: url, locals: &__locals )
-        JNIMethod.CallVoidMethod( object: javaObject, methodName: "handleAccessTokenURL", methodSig: "(Ljava/lang/String;)V", methodCache: &ProjectsBinding_ListenerForward.handleAccessTokenURL_MethodID_8, args: &__args, locals: &__locals )
+        JNIMethod.CallVoidMethod( object: javaObject, methodName: "handleAccessTokenURL", methodSig: "(Ljava/lang/String;)V", methodCache: &ProjectsBinding_ListenerForward.handleAccessTokenURL_MethodID_9, args: &__args, locals: &__locals )
     }
 
     open func handleAccessTokenURL( _ _url: String? ) {
@@ -73,13 +79,13 @@ open class ProjectsBinding_ListenerForward: JNIObjectForward, ProjectsBinding_Li
 
     /// public abstract void com.lumyk.swiftbindings.ProjectsBinding$Listener.setCacheDir(java.lang.String)
 
-    private static var setCacheDir_MethodID_9: jmethodID?
+    private static var setCacheDir_MethodID_10: jmethodID?
 
     open func setCacheDir( cacheDir: String? ) {
         var __locals = [jobject]()
         var __args = [jvalue]( repeating: jvalue(), count: 1 )
         __args[0] = JNIType.toJava( value: cacheDir, locals: &__locals )
-        JNIMethod.CallVoidMethod( object: javaObject, methodName: "setCacheDir", methodSig: "(Ljava/lang/String;)V", methodCache: &ProjectsBinding_ListenerForward.setCacheDir_MethodID_9, args: &__args, locals: &__locals )
+        JNIMethod.CallVoidMethod( object: javaObject, methodName: "setCacheDir", methodSig: "(Ljava/lang/String;)V", methodCache: &ProjectsBinding_ListenerForward.setCacheDir_MethodID_10, args: &__args, locals: &__locals )
     }
 
     open func setCacheDir( _ _cacheDir: String? ) {
@@ -88,25 +94,42 @@ open class ProjectsBinding_ListenerForward: JNIObjectForward, ProjectsBinding_Li
 
     /// public abstract void com.lumyk.swiftbindings.ProjectsBinding$Listener.setupAccessToken(java.lang.String)
 
-    private static var setupAccessToken_MethodID_10: jmethodID?
+    private static var setupAccessToken_MethodID_11: jmethodID?
 
     open func setupAccessToken( accessToken: String? ) {
         var __locals = [jobject]()
         var __args = [jvalue]( repeating: jvalue(), count: 1 )
         __args[0] = JNIType.toJava( value: accessToken, locals: &__locals )
-        JNIMethod.CallVoidMethod( object: javaObject, methodName: "setupAccessToken", methodSig: "(Ljava/lang/String;)V", methodCache: &ProjectsBinding_ListenerForward.setupAccessToken_MethodID_10, args: &__args, locals: &__locals )
+        JNIMethod.CallVoidMethod( object: javaObject, methodName: "setupAccessToken", methodSig: "(Ljava/lang/String;)V", methodCache: &ProjectsBinding_ListenerForward.setupAccessToken_MethodID_11, args: &__args, locals: &__locals )
     }
 
     open func setupAccessToken( _ _accessToken: String? ) {
         setupAccessToken( accessToken: _accessToken )
     }
 
+    /// public abstract void com.lumyk.swiftbindings.ProjectsBinding$Listener.validateAccessToken(java.lang.String)
+
+    private static var validateAccessToken_MethodID_12: jmethodID?
+
+    open func validateAccessToken( accessToken: String? ) {
+        var __locals = [jobject]()
+        var __args = [jvalue]( repeating: jvalue(), count: 1 )
+        __args[0] = JNIType.toJava( value: accessToken, locals: &__locals )
+        JNIMethod.CallVoidMethod( object: javaObject, methodName: "validateAccessToken", methodSig: "(Ljava/lang/String;)V", methodCache: &ProjectsBinding_ListenerForward.validateAccessToken_MethodID_12, args: &__args, locals: &__locals )
+    }
+
+    open func validateAccessToken( _ _accessToken: String? ) {
+        validateAccessToken( accessToken: _accessToken )
+    }
+
 }
 
-private typealias ProjectsBinding_Listener_createOauthURL_0_type = @convention(c) ( _: UnsafeMutablePointer<JNIEnv?>, _: jobject?, _: jlong ) -> ()
+private typealias ProjectsBinding_Listener_getOauthURL_0_type = @convention(c) ( _: UnsafeMutablePointer<JNIEnv?>, _: jobject?, _: jlong ) -> jobject?
 
-private func ProjectsBinding_Listener_createOauthURL_0( _ __env: UnsafeMutablePointer<JNIEnv?>, _ __this: jobject?, _ __swiftObject: jlong ) -> () {
-    ProjectsBinding_ListenerLocal_.swiftObject( jniEnv: __env, javaObject: __this, swiftObject: __swiftObject ).createOauthURL( )
+private func ProjectsBinding_Listener_getOauthURL_0( _ __env: UnsafeMutablePointer<JNIEnv?>, _ __this: jobject?, _ __swiftObject: jlong ) -> jobject? {
+    let __return = ProjectsBinding_ListenerLocal_.swiftObject( jniEnv: __env, javaObject: __this, swiftObject: __swiftObject ).getOauthURL( )
+    var __locals = [jobject]()
+    return JNI.check( JNIType.toJava( value: __return, locals: &__locals ).l, &__locals, removeLast: true )
 }
 
 private typealias ProjectsBinding_Listener_getUser_1_type = @convention(c) ( _: UnsafeMutablePointer<JNIEnv?>, _: jobject?, _: jlong ) -> ()
@@ -133,13 +156,19 @@ private func ProjectsBinding_Listener_setupAccessToken_4( _ __env: UnsafeMutable
     ProjectsBinding_ListenerLocal_.swiftObject( jniEnv: __env, javaObject: __this, swiftObject: __swiftObject ).setupAccessToken( accessToken: accessToken != nil ? String( javaObject: accessToken ) : nil )
 }
 
+private typealias ProjectsBinding_Listener_validateAccessToken_5_type = @convention(c) ( _: UnsafeMutablePointer<JNIEnv?>, _: jobject?, _: jlong, _: jobject? ) -> ()
+
+private func ProjectsBinding_Listener_validateAccessToken_5( _ __env: UnsafeMutablePointer<JNIEnv?>, _ __this: jobject?, _ __swiftObject: jlong, _ accessToken: jobject? ) -> () {
+    ProjectsBinding_ListenerLocal_.swiftObject( jniEnv: __env, javaObject: __this, swiftObject: __swiftObject ).validateAccessToken( accessToken: accessToken != nil ? String( javaObject: accessToken ) : nil )
+}
+
 fileprivate class ProjectsBinding_ListenerLocal_: JNILocalProxy<ProjectsBinding_Listener, Any> {
 
     fileprivate static let _proxyClass: jclass = {
         var natives = [JNINativeMethod]()
 
-        let ProjectsBinding_Listener_createOauthURL_0_thunk: ProjectsBinding_Listener_createOauthURL_0_type = ProjectsBinding_Listener_createOauthURL_0
-        natives.append( JNINativeMethod( name: strdup("__createOauthURL"), signature: strdup("(J)V"), fnPtr: unsafeBitCast( ProjectsBinding_Listener_createOauthURL_0_thunk, to: UnsafeMutableRawPointer.self ) ) )
+        let ProjectsBinding_Listener_getOauthURL_0_thunk: ProjectsBinding_Listener_getOauthURL_0_type = ProjectsBinding_Listener_getOauthURL_0
+        natives.append( JNINativeMethod( name: strdup("__getOauthURL"), signature: strdup("(J)Ljava/lang/String;"), fnPtr: unsafeBitCast( ProjectsBinding_Listener_getOauthURL_0_thunk, to: UnsafeMutableRawPointer.self ) ) )
 
         let ProjectsBinding_Listener_getUser_1_thunk: ProjectsBinding_Listener_getUser_1_type = ProjectsBinding_Listener_getUser_1
         natives.append( JNINativeMethod( name: strdup("__getUser"), signature: strdup("(J)V"), fnPtr: unsafeBitCast( ProjectsBinding_Listener_getUser_1_thunk, to: UnsafeMutableRawPointer.self ) ) )
@@ -152,6 +181,9 @@ fileprivate class ProjectsBinding_ListenerLocal_: JNILocalProxy<ProjectsBinding_
 
         let ProjectsBinding_Listener_setupAccessToken_4_thunk: ProjectsBinding_Listener_setupAccessToken_4_type = ProjectsBinding_Listener_setupAccessToken_4
         natives.append( JNINativeMethod( name: strdup("__setupAccessToken"), signature: strdup("(JLjava/lang/String;)V"), fnPtr: unsafeBitCast( ProjectsBinding_Listener_setupAccessToken_4_thunk, to: UnsafeMutableRawPointer.self ) ) )
+
+        let ProjectsBinding_Listener_validateAccessToken_5_thunk: ProjectsBinding_Listener_validateAccessToken_5_type = ProjectsBinding_Listener_validateAccessToken_5
+        natives.append( JNINativeMethod( name: strdup("__validateAccessToken"), signature: strdup("(JLjava/lang/String;)V"), fnPtr: unsafeBitCast( ProjectsBinding_Listener_validateAccessToken_5_thunk, to: UnsafeMutableRawPointer.self ) ) )
 
         natives.append( JNINativeMethod( name: strdup("__finalize"), signature: strdup("(J)V"), fnPtr: unsafeBitCast( JNIReleasableProxy__finalize_thunk, to: UnsafeMutableRawPointer.self ) ) )
 
@@ -184,9 +216,10 @@ open class ProjectsBinding_ListenerBase: ProjectsBinding_Listener {
 
     public init() {}
 
-    /// public abstract void com.lumyk.swiftbindings.ProjectsBinding$Listener.createOauthURL()
+    /// public abstract java.lang.String com.lumyk.swiftbindings.ProjectsBinding$Listener.getOauthURL()
 
-    open func createOauthURL() /**/ {
+    open func getOauthURL() -> String! /**/ {
+        return nil
     }
 
 
@@ -211,6 +244,12 @@ open class ProjectsBinding_ListenerBase: ProjectsBinding_Listener {
     /// public abstract void com.lumyk.swiftbindings.ProjectsBinding$Listener.setupAccessToken(java.lang.String)
 
     open func setupAccessToken( accessToken: String? ) /**/ {
+    }
+
+
+    /// public abstract void com.lumyk.swiftbindings.ProjectsBinding$Listener.validateAccessToken(java.lang.String)
+
+    open func validateAccessToken( accessToken: String? ) /**/ {
     }
 
 

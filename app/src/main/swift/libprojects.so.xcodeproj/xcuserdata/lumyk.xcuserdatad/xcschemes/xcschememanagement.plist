@@ -27,7 +27,7 @@
 		<key>GithubSDKPackageDescription.xcscheme</key>
 		<dict>
 			<key>orderHint</key>
-			<integer>1</integer>
+			<integer>2</integer>
 		</dict>
 		<key>java_swiftPackageDescription.xcscheme</key>
 		<dict>
@@ -47,7 +47,7 @@
 		<key>libprojects.soPackageDescription.xcscheme</key>
 		<dict>
 			<key>orderHint</key>
-			<integer>2</integer>
+			<integer>1</integer>
 		</dict>
 	</dict>
 </dict>
